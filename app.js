@@ -6,6 +6,7 @@ window.addEventListener('load', ()=> {
     let temperatureDesc = document.querySelector('.temperature-description');
     let temperatureDegree = document.querySelector('.temperature-degree');
     let city = document.querySelector('.location-city');
+    let temperatureType = document.querySelector('.tip');
 
     "api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"
 
@@ -46,6 +47,33 @@ window.addEventListener('load', ()=> {
                     //Slika
                     let link = `http://openweathermap.org/img/wn/${pictureID}@2x.png`;
                     document.getElementById("slika").src = link;
+
+                    //Gumb
+                    document.getElementById("temperature-degree").addEventListener("click", () =>{
+
+                        let preveriTip = document.getElementById("tip").innerHTML;
+
+                    
+                        //Ali je pri temperaturi zapisan C?
+                        if(preveriTip == "C")
+                        {
+                            //FAHRENHEIT
+                            temperatureDegree.textContent = temperaturaF.toFixed(1);
+                            temperatureType.textContent = "F";
+
+                        }
+                        //Če ni zapisan C je zapisan F
+                        else
+                        {
+                            //CELSIUS
+                            temperatureDegree.textContent = temperaturaC.toFixed(1);
+                            temperatureType.textContent = "C";
+                            
+                        }
+
+
+                    });
+
                 });
             });
     }
@@ -67,3 +95,26 @@ function convertToFahr(kelvin)
     Number.parseInt(kelvin, 10);
     return ((kelvin - 273.15) * 1.8) + 32;
 }
+
+/*
+function spremeniNapis(temperaturaCP, temperaturaFP)
+{
+    let preveriTip = document.getElementById("tip").innerHTML;
+    let temperatura = document.getElementById("temperature-degree").innerHTML;
+    Number.parseInt(temperatura, 10);
+
+    //Ali je pri temperaturi zapisan C?
+    if(preveriTip == "C")
+    {
+        console.log("notri je C");
+    }
+    //Če ni zapisan C je zapisan F
+    else
+    {
+        console.log("notri ni C!");
+        let result = (temperatura * 1.8) + 32;
+        document.getElementById("temperature-degree").innerHTML = temperatura;
+        document.getElementById("tip").innerHTML = "F";
+    }
+}
+*/
