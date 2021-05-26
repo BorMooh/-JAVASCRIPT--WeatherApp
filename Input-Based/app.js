@@ -7,13 +7,14 @@ document.getElementById("location-submit").addEventListener('click', ()=>
     //Elementi iz HTML
     let dataDegrees = document.querySelector('.data-degrees');
     let dataDescription = document.querySelector('.description');
-    let dataTimezone = document.querySelector('.timezone');
+    let dataTimezone = document.querySelector('.data-table-time-timezone');
     let dataTime = document.querySelector('.data-table-time-info');
     let dataType = document.querySelector('.tip');
     let dataClouds = document.querySelector('.data-table-clouds-info');
     let dataWindspeed = document.querySelector('.data-table-wind-speed');
     let dataWindgust = document.querySelector('.data-table-wind-gust');
     let dataWindbearing = document.querySelector('.data-table-wind-bearing');
+    
 
 
     //API
@@ -56,12 +57,24 @@ document.getElementById("location-submit").addEventListener('click', ()=>
 
 
 
-            //Prikazanje podatkov na zaslon z .textContent od vsakega queryselectorja(glej "Elementi iz HTML")
+            //Če timezone pred številko nima minusa mu dodamo plus(za lepši output)
+            if(data.timezone > 0)
+            {
+                dataTimezone.textContent = "UTC +" + timezone;
+            }
+            //Če pa ima timezone pred številko minus ga pa samo izpišemo
+            else
+            {
+                dataTimezone.textContent = "UTC " + timezone;
+            }
+
+
             
-            dataClouds.textContent = cloudiness + "%";
-            dataWindbearing.textContent = windDeg + "°";
-            dataWindspeed.textContent = windSpeed + " km/h";
-            dataWindgust.textContent = windGust + "km/h";
+            //Prikazanje podatkov na zaslon z .textContent od vsakega queryselectorja(glej "Elementi iz HTML")
+            dataClouds.textContent = "clouds: " + cloudiness + "%";
+            dataWindbearing.textContent = "bearing: " + windDeg + "°";
+            dataWindspeed.textContent = "spd:" +windSpeed + " km/h";
+            dataWindgust.textContent = "gust: " + windGust + "km/h";
             dataTime.textContent = localTime;
             dataDegrees.textContent = tempC;
             dataDescription.textContent = weatherDesc;
