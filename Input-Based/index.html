@@ -2,16 +2,20 @@
     <head>
         <meta chatset="utf8" />
         <link rel="stylesheet" href="./styles.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title> Projekt Vreme</title>
     </head>
     <body>
         <div class="location">
-            <input type="text" class="location-input" id="location-input" value="Železniki" /> 
+            <form class="example">
+                <input type="text" value="Železniki" name="location-input" id="location-input">
+                <button type="button" name="location-submit" id="location-submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
         <div class="data">
             <div class="degree">
-                <h2 class="data-degrees">15</h2>
-                <span>C</span>
+                <h2 class="data-degrees" id="data-degrees">15</h2>
+                <span class="tip" id="tip">C</span>
             </div>
 
             <hr style="width:50%;text-align:left;margin-left:0" /> 
