@@ -51,8 +51,21 @@ body{
     font-size: 20px;
     text-align: center;
 }
+.data-table,td,tr,table{
+    text-align: center;
+    border-collapse: collapse;
+}
+td{
+    border-right: solid 1px white;
+    border-left: solid 1px white;
+    width: 110px;
+    max-width: 110px;
+}
 
-
+.data-table-icons{
+    height: 50px;
+    border-bottom: solid 1px white;
+}
 
 
 form.example input[type=text] {

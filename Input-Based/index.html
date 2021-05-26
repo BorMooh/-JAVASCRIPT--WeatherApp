@@ -19,18 +19,73 @@
             </div>
 
             <hr style="width:50%;text-align:left;margin-left:0" /> 
-            <div class="image">
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" class="data-image" id="image" />
-            </div>
-            <div class="description">
-                DESCRIPTION
-            </div>
-            <div class="timezone">
-                TIMEZONE
-            </div>
-            <div class="time">
-                TIME
-            </div>
+
+
+            <table class="data-table">
+
+                <!--FIRST ROW | ICONS-->
+                <tr id="data-table-icons" class="data-table-icons">
+
+                    <td id="data-table-weather">
+                        <div class="image">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="weather-image" id="weather-image" />
+                        </div>
+
+                    </td>
+
+                    <td id="data-table-clouds">
+                        <div class="data-table-clouds-image">
+                            <img src="./images/cloudiness.png" class="clouds-image" id="clouds-image" width="100px"/>
+                        </div>
+                    </td>
+
+                    <td id="data-table-wind">
+                        <div class="data-table-wind-image">
+                             <img src="images/wind.png" class="wind-image" id="wind-image" width="70px" />
+                        </div>
+                    </td>
+                    <td id="data-table-time">
+                        <div class="data-table-time-image">
+                            <img src="images/clock.png" class="time-image" id="time-image" width="75px" />
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <!--SECOND ROW | INFO-->
+                <tr id="data-table-info" class="data-table-info">
+                    <td>
+                        <div class="description">
+                            DESCRIPTION
+                        </div>
+                    </td>
+                    <td>
+                        <div class="data-table-clouds-info">
+                            50%
+                        </div> 
+                        <div class="data-table-wind-bearing">
+                            250°
+                        </div>
+                        <div class="data-table-wind-speed">
+                            12km/h
+                        </div>
+                    </td>
+                    <td>
+                        <div class="data-table-wind-gust">
+                            10km/h
+                        </div>
+                    </td>
+                    <td>
+                        <div class="data-table-time-info">
+                            00:00
+                        </div>
+                    </td>  
+                </tr> 
+
+            </table>
+
+
         </div>
 
         <script src="./app.js"></script>

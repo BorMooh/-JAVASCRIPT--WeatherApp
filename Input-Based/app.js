@@ -8,8 +8,12 @@ document.getElementById("location-submit").addEventListener('click', ()=>
     let dataDegrees = document.querySelector('.data-degrees');
     let dataDescription = document.querySelector('.description');
     let dataTimezone = document.querySelector('.timezone');
-    let dataTime = document.querySelector('.time');
+    let dataTime = document.querySelector('.data-table-time-info');
     let dataType = document.querySelector('.tip');
+    let dataClouds = document.querySelector('.data-table-clouds-info');
+    let dataWindspeed = document.querySelector('.data-table-wind-speed');
+    let dataWindgust = document.querySelector('.data-table-wind-gust');
+    let dataWindbearing = document.querySelector('.data-table-wind-bearing');
 
 
     //API
@@ -39,6 +43,8 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             //Veter
             let windDeg = data.wind.deg;
             let windSpeed = data.wind.speed;
+            let windGust = data.wind.gust;
+
 
 
             //Geografski podatki o lokaciji
@@ -51,18 +57,21 @@ document.getElementById("location-submit").addEventListener('click', ()=>
 
 
             //Prikazanje podatkov na zaslon z .textContent od vsakega queryselectorja(glej "Elementi iz HTML")
-            dataTimezone.textContent = `UTC ${timezone}`;
+            
+            dataClouds.textContent = cloudiness + "%";
+            dataWindbearing.textContent = windDeg + "°";
+            dataWindspeed.textContent = windSpeed + " km/h";
+            dataWindgust.textContent = windGust + "km/h";
             dataTime.textContent = localTime;
             dataDegrees.textContent = tempC;
             dataDescription.textContent = weatherDesc;
-            document.getElementById("image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+            document.getElementById("weather-image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 
             //SPREMEMBA IZ CELSIUS NA FAHRENHEIT
             document.getElementById("data-degrees").addEventListener("click", () =>{
 
                 let preveriTip = document.getElementById("tip").innerHTML;
-                console.log(preveriTip);
             
                 //Ali je pri temperaturi zapisan C?
                 if(preveriTip == "C")
