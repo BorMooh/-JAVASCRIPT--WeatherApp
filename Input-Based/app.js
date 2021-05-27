@@ -62,6 +62,7 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             let mesto = data.name
             let timezone = getTimeZone(data.timezone);
             let localTime = getTime(timezone);
+            let drzava = data.sys.country;
             let lat = data.coord.lat;
             let lon = data.coord.lon;
 
@@ -83,17 +84,25 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             //Prikazanje podatkov na zaslon z .textContent od vsakega queryselectorja(glej "Elementi iz HTML")
             dataClouds.textContent = "clouds: " + cloudiness + "%";
             dataWindbearing.textContent = "bearing: " + windDeg + "°";
-            dataWindspeed.textContent = "spd:" +windSpeed + " km/h";
-            dataWindgust.textContent = "gust: " + windGust + "km/h";
+            dataWindspeed.textContent = "speed:" +windSpeed + " km/h";
+
+            
+            //Kdaj se pri "WInd Gust" izpiše da je 'undefined' - če je undefined napišemo samo trenutno hitrost vetra 
+            if(windGust == undefined)
+                dataWindgust.textContent = `gust: ${windSpeed} km/h`;
+            else
+                dataWindgust.textContent = "gust: " + windGust + "km/h";
+            
+
             dataTime.textContent = localTime;
             dataDegrees.textContent = tempC;
             dataDescription.textContent = weatherDesc;
             document.getElementById("weather-image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 
-            //TEST
-            inputLocation.textContent = mesto + ", " + 
-            //
+            //Nastavljanje trenutnega mesta kot placeholder v input box - Value se mora izbrisati da se placeholder vidi
+            document.getElementById('location-input').placeholder = `${mesto}, ${drzava}`;
+            document.getElementById('location-input').value = "";
 
             //SPREMEMBA IZ CELSIUS NA FAHRENHEIT
             document.getElementById("data-degrees").addEventListener("click", () =>{
@@ -101,11 +110,11 @@ document.getElementById("location-submit").addEventListener('click', ()=>
                 let preveriTip = document.getElementById("tip").innerHTML;
             
                 //Ali je pri temperaturi zapisan C?
-                if(preveriTip == "C")
+                if(preveriTip == "°C")
                 {
                     //FAHRENHEIT
                     dataDegrees.textContent = tempF;
-                    dataType.textContent = "F";
+                    dataType.textContent = "°F";
 
                 }
                 //Če ni zapisan C je zapisan F
@@ -113,7 +122,7 @@ document.getElementById("location-submit").addEventListener('click', ()=>
                 {
                     //CELSIUS
                     dataDegrees.textContent = tempC;
-                    dataType.textContent = "C";
+                    dataType.textContent = "°C";
 
                 }
 
