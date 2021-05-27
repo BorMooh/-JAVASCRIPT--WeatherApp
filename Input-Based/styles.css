@@ -53,18 +53,23 @@ body{
 }
 .data-table,td,tr,table{
     text-align: center;
-    border-collapse: collapse;
+    border-radius: 5px;
+    border-spacing: 10px;
 }
 td{
-    border-right: solid 1px white;
-    border-left: solid 1px white;
+    border:  #3498db  1px solid;
     width: 110px;
+    padding: 10px;
     max-width: 110px;
+    background-color:  #3498db 
+}
+/*CSS Styler za podatke o vetru*/
+.data-table-wind{
+    font-size: 15px;
 }
 
 .data-table-icons{
     height: 50px;
-    border-bottom: solid 1px white;
 }
 
 

@@ -1,8 +1,16 @@
+//TODO
+/*
+    -Podatek je lahko undefined(wind gust)
+    -ikone?
+    -stil
+    -lahko izbiramo lokacijo na mapi? (long,lat kot API parametri)
+*/
+
 document.getElementById("location-submit").addEventListener('click', ()=>
 {
 
     //Konstanta, ki jo lahko spreminja samo input field na index.html
-    const inputLocation = document.getElementById("location-input").value;
+    let inputLocation = document.getElementById("location-input").value;
 
     //Elementi iz HTML
     let dataDegrees = document.querySelector('.data-degrees');
@@ -38,6 +46,8 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             let cloudiness = data.clouds.all; //Koliko procentov je oblakov
             let visibility = data.visibility;
             let weather = data.weather[0].main;
+            let humidity = data.main.humidity;
+            let pressure = data.main.pressure;
             let weatherDesc = data.weather[0].description;
             let icon = data.weather[0].icon;
 
@@ -80,6 +90,10 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             dataDescription.textContent = weatherDesc;
             document.getElementById("weather-image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
+
+            //TEST
+            inputLocation.textContent = mesto + ", " + 
+            //
 
             //SPREMEMBA IZ CELSIUS NA FAHRENHEIT
             document.getElementById("data-degrees").addEventListener("click", () =>{

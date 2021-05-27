@@ -13,12 +13,14 @@
             </form>
         </div>
         <div class="data">
+
+            <h2 class="degree-title">Temperature: </h2>
             <div class="degree">
                 <h2 class="data-degrees" id="data-degrees">15</h2>
                 <span class="tip" id="tip">C</span>
             </div>
 
-            <hr style="width:50%;text-align:left;margin-left:0" /> 
+            <hr style="width:50%;text-align:left;margin-left:0;color:white;" /> 
 
 
             <table class="data-table">
@@ -30,42 +32,24 @@
                         <div class="image">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" class="weather-image" id="weather-image" />
                         </div>
-
+                        <div class="description">
+                            DESCRIPTION
+                        </div>
                     </td>
 
                     <td id="data-table-clouds">
                         <div class="data-table-clouds-image">
                             <img src="./images/cloudiness.png" class="clouds-image" id="clouds-image" width="100px"/>
                         </div>
-                    </td>
-
-                    <td id="data-table-wind">
-                        <div class="data-table-wind-image">
-                             <img src="images/wind.png" class="wind-image" id="wind-image" width="70px" />
-                        </div>
-                    </td>
-                    <td id="data-table-time">
-                        <div class="data-table-time-image">
-                            <img src="images/clock.png" class="time-image" id="time-image" width="75px" />
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <!--SECOND ROW | INFO-->
-                <tr id="data-table-info" class="data-table-info">
-                    <td>
-                        <div class="description">
-                            DESCRIPTION
-                        </div>
-                    </td>
-                    <td>
                         <div class="data-table-clouds-info">
                             50%
                         </div> 
                     </td>
-                    <td>
+
+                    <td id="data-table-wind" class="data-table-wind">
+                        <div class="data-table-wind-image">
+                             <img src="images/wind.png" class="wind-image" id="wind-image" width="70px" />
+                        </div>
                         <div class="data-table-wind-bearing">
                             250°
                         </div>
@@ -76,16 +60,38 @@
                             10km/h
                         </div>
                     </td>
-                    <td>
+                    <td id="data-table-time">
+                        <div class="data-table-time-image">
+                            <img src="images/clock.png" class="time-image" id="time-image" width="75px" />
+                        </div>
                         <div class="data-table-time-timezone">
                             UTC+1
                         </div>
                         <div class="data-table-time-info">
                             00:00
                         </div>
+                    </td>
+
+                </tr>
+
+                <!--SECOND ROW | INFO-->
+
+                <!--
+                <tr id="data-table-info" class="data-table-info">
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+
                     </td>  
                 </tr> 
-
+                -->
             </table>
 
 
