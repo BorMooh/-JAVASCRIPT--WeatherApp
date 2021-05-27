@@ -22,6 +22,10 @@ document.getElementById("location-submit").addEventListener('click', ()=>
     let dataWindspeed = document.querySelector('.data-table-wind-speed');
     let dataWindgust = document.querySelector('.data-table-wind-gust');
     let dataWindbearing = document.querySelector('.data-table-wind-bearing');
+    let dataVisibility = document.querySelector('.data-table-info-visiblity');
+    let dataHumidity = document.querySelector('.data-table-info-humidity');
+    let dataPressure = document.querySelector('.data-table-info-pressure');
+    let dataCoords = document.querySelector('.data-table-info-coords');
     
 
 
@@ -92,13 +96,19 @@ document.getElementById("location-submit").addEventListener('click', ()=>
                 dataWindgust.textContent = `gust: ${windSpeed} km/h`;
             else
                 dataWindgust.textContent = "gust: " + windGust + "km/h";
-            
+            if(visibility == undefined)
+                dataVisibility.textContent = "visibility unknown";
+            else
+                dataVisibility.textContent = visibility + "m";
 
             dataTime.textContent = localTime;
             dataDegrees.textContent = tempC;
             dataDescription.textContent = weatherDesc;
+            dataHumidity.textContent = humidity;
+            dataPressure.textContent = pressure;
+            dataCoords.textContent = `lat: ${lat} lon: ${lon}`;
             document.getElementById("weather-image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
+            
 
             //Nastavljanje trenutnega mesta kot placeholder v input box - Value se mora izbrisati da se placeholder vidi
             document.getElementById('location-input').placeholder = `${mesto}, ${drzava}`;
