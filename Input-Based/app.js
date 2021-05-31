@@ -6,8 +6,12 @@
     -lahko izbiramo lokacijo na mapi? (long,lat kot API parametri)
 */
 
+//Input error provider nastavimo na none, tako da se ne prikaže ob zagonu strani
+document.getElementById('input-error').style.display = "none";
+
 document.getElementById("location-submit").addEventListener('click', ()=>
 {
+
 
     //Konstanta, ki jo lahko spreminja samo input field na index.html
     let inputLocation = document.getElementById("location-input").value;
@@ -42,7 +46,16 @@ document.getElementById("location-submit").addEventListener('click', ()=>
         .then(data => {
             console.log(data);
 
-            
+
+            //Error provider
+            if(data.message == "Nothing to geocode")
+            {
+                document.getElementById('input-error').style.display = "block";
+                return;
+            }
+            document.getElementById('input-error').style.display = "none";
+
+
             //Temperatura, vreme, oblaki, vidnost, ikona za prikaz
             let tempK = data.main.temp;
             let tempC = convertToCelsius(tempK);
@@ -104,8 +117,8 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             dataTime.textContent = localTime;
             dataDegrees.textContent = tempC;
             dataDescription.textContent = weatherDesc;
-            dataHumidity.textContent = humidity;
-            dataPressure.textContent = pressure;
+            dataHumidity.textContent = humidity + "%";
+            dataPressure.textContent = pressure + "hPa";
             dataCoords.textContent = `lat: ${lat} lon: ${lon}`;
             document.getElementById("weather-image").src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
             

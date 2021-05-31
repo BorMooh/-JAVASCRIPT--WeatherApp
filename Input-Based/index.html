@@ -10,6 +10,7 @@
             <form class="example">
                 <input required type="text" value="Železniki" placeholder="City..." name="location-input" id="location-input" />
                 <button type="button" name="location-submit" id="location-submit"><i class="fa fa-search"></i></button>
+                <p id="input-error" class="input-error"><span>Check your input.</span></p>
             </form>
         </div>
         <div class="data">
@@ -78,16 +79,31 @@
 
                 
                 <tr id="data-table-info" class="data-table-info">
-                    <td class="data-table-info-visiblity">
-                        8612m
+                    <td class="data-table-visiblity">
+                        <div class="data-table-info-visibility-text">
+                            Visibility:
+                        </div>
+                        <div class="data-table-info-visiblity">
+                            8612m
+                        </div>
                     </td>
 
-                    <td class="data-table-info-humidity">
-                        INFO
+                    <td class="data-table-humidity">
+                        <div class="data-table-info-humidity-text">
+                            Humudity:
+                        </div>
+                        <div class="data-table-info-humidity">
+                            INFO
+                        </div>
                     </td>
 
-                    <td class="data-table-info-pressure">
-                        INFO
+                    <td class="data-table-pressure">
+                        <div class="data-table-info-pressure-text">
+                            Pressure:
+                        </div>
+                        <div class="data-table-info-pressure">
+                            INFO
+                        </div>
                     </td>
 
                     <td class="data-table-info-coords">

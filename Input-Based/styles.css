@@ -73,8 +73,21 @@ td{
 }
 
 
+.input-error{
+    text-align: center;
+    transition: 1s;
+
+}
+p span{
+    background-color: #f44336;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 form.example input[type=text] {
     padding: 10px;
+    margin-bottom: 15px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
