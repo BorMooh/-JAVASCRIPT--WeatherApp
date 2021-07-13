@@ -9,6 +9,9 @@
 //Input error provider nastavimo na none, tako da se ne prikaže ob zagonu strani
 document.getElementById('input-error').style.display = "none";
 
+//Gumb avtomatsko disablamo - nočemo da ga uporabnik pritisne preden sploh napiše lokacijo
+document.getElementById("mapButton").disabled = true;
+
 document.getElementById("location-submit").addEventListener('click', ()=>
 {
 
@@ -46,11 +49,11 @@ document.getElementById("location-submit").addEventListener('click', ()=>
         .then(data => {
             console.log(data);
 
-
             //Error provider
             if(data.message == "Nothing to geocode")
             {
                 document.getElementById('input-error').style.display = "block";
+                document.getElementById('mapButton').disabled = true;
                 return;
             }
             document.getElementById('input-error').style.display = "none";
@@ -95,8 +98,6 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             {
                 dataTimezone.textContent = "UTC " + timezone;
             }
-
-
             
             //Prikazanje podatkov na zaslon z .textContent od vsakega queryselectorja(glej "Elementi iz HTML")
             dataClouds.textContent = "clouds: " + cloudiness + "%";
@@ -130,35 +131,31 @@ document.getElementById("location-submit").addEventListener('click', ()=>
             //SPREMEMBA IZ CELSIUS NA FAHRENHEIT
             document.getElementById("data-degrees").addEventListener("click", () =>{
 
-                let preveriTip = document.getElementById("tip").innerHTML;
-            
-                //Ali je pri temperaturi zapisan C?
-                if(preveriTip == "°C")
-                {
-                    //FAHRENHEIT
-                    dataDegrees.textContent = tempF;
-                    dataType.textContent = "°F";
+            let preveriTip = document.getElementById("tip").innerHTML;
+            //Ali je pri temperaturi zapisan C?
+            if(preveriTip == "°C")
+            {
+                //FAHRENHEIT
+                dataDegrees.textContent = tempF;
+                dataType.textContent = "°F";
 
-                }
-                //Če ni zapisan C je zapisan F
-                else
-                {
-                    //CELSIUS
-                    dataDegrees.textContent = tempC;
-                    dataType.textContent = "°C";
+            }
+            //Če ni zapisan C je zapisan F
+            else
+            {
+                //CELSIUS
+                dataDegrees.textContent = tempC;
+                dataType.textContent = "°C";
 
-                }
-
+            }
 
             });
 
+            //Gumb za odpiranje lokacije 
+            document.getElementById('mapButton').disabled = false;
             //
-
-
         })
 });
-
-
 
 //Konverzija iz Kelvinov v Celzije
 function convertToCelsius(kelvin)
@@ -208,6 +205,15 @@ function getTime(timezone)
         minutes = "0" + minutes;
     }
 
-
     return `${hours}:${minutes}`;
+}
+
+//Funkcija za odpiranje lokacije v novem zavihku
+function OpenLocation()
+{
+    //LAT in LON dobimo iz spletne strani - naredimo substring
+    var lat = document.getElementById('data-table-info-coords').innerHTML.substring(4, 12);
+    var lon = document.getElementById('data-table-info-coords').innerHTML.substring(18,25);
+
+    window.open(`https://www.google.com/maps/place/${lat},${lon}`)
 }

@@ -118,3 +118,23 @@ form.example input[type=text] {
     clear: both;
     display: table;
   }
+
+
+/*Gumb za odpiranje lokacije - Map*/
+#mapButton {
+    font-size: 1em;
+    font-weight: bold;
+    width: 130;
+    min-height: 35;
+
+    border-radius: 40px;
+    border: 1px solid black;
+    background-color: #d4d4d4;
+
+    transition-duration: 0.4s;
+}
+
+#mapButton:hover{
+    background-color: #8f8f8f;
+    transition-duration: 0.4s;
+}
